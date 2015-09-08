@@ -1,0 +1,333 @@
+{
+  "id" : null,
+  "name" : "HTTP Monitor",
+  "description" : "Dashboards and Streams for HTTP Monitor Input Plugin",
+  "category" : "HTTP Web",
+  "inputs" : [ ],
+  "streams" : [ {
+    "id" : "55ef1066e4b0d04bbc160db5",
+    "title" : "HTTP Monitor 3XXs",
+    "description" : "HTTP 3XX status codes",
+    "disabled" : true,
+    "outputs" : [ ],
+    "stream_rules" : [ {
+      "type" : "GREATER",
+      "field" : "http.monitor.status",
+      "value" : "299",
+      "inverted" : false
+    }, {
+      "type" : "SMALLER",
+      "field" : "http.monitor.status",
+      "value" : "400",
+      "inverted" : false
+    } ]
+  }, {
+    "id" : "55ef0a2de4b0d04bbc16070e",
+    "title" : "HTTP Monitor Timeouts",
+    "description" : "HTTP Timeout messages",
+    "disabled" : true,
+    "outputs" : [ ],
+    "stream_rules" : [ {
+      "type" : "EXACT",
+      "field" : "http.monitor.status",
+      "value" : "998",
+      "inverted" : false
+    } ]
+  }, {
+    "id" : "55ef0aa0e4b0d04bbc160788",
+    "title" : "HTTP Monitor Connection Failures",
+    "description" : "HTTP Connection failure messages",
+    "disabled" : true,
+    "outputs" : [ ],
+    "stream_rules" : [ {
+      "type" : "EXACT",
+      "field" : "http.monitor.status",
+      "value" : "999",
+      "inverted" : false
+    } ]
+  }, {
+    "id" : "55ef1022e4b0d04bbc160d6b",
+    "title" : "HTTP Monitor 2XXs",
+    "description" : "HTTP 2XX status codes",
+    "disabled" : true,
+    "outputs" : [ ],
+    "stream_rules" : [ {
+      "type" : "GREATER",
+      "field" : "http.monitor.status",
+      "value" : "199",
+      "inverted" : false
+    }, {
+      "type" : "SMALLER",
+      "field" : "http.monitor.status",
+      "value" : "300",
+      "inverted" : false
+    } ]
+  }, {
+    "id" : "55ef0862e4b0d04bbc160520",
+    "title" : "HTTP Monitor 5XXs",
+    "description" : "HTTP 5XX status codes",
+    "disabled" : true,
+    "outputs" : [ ],
+    "stream_rules" : [ {
+      "type" : "GREATER",
+      "field" : "http.monitor.status",
+      "value" : "499",
+      "inverted" : false
+    }, {
+      "type" : "SMALLER",
+      "field" : "http.monitor.status",
+      "value" : "600",
+      "inverted" : false
+    } ]
+  }, {
+    "id" : "55ef09d5e4b0d04bbc1606ae",
+    "title" : "HTTP Monitor 4XXs",
+    "description" : "HTTP 4XX status codes",
+    "disabled" : true,
+    "outputs" : [ ],
+    "stream_rules" : [ {
+      "type" : "GREATER",
+      "field" : "http.monitor.status",
+      "value" : "399",
+      "inverted" : false
+    }, {
+      "type" : "SMALLER",
+      "field" : "http.monitor.status",
+      "value" : "500",
+      "inverted" : false
+    } ]
+  } ],
+  "outputs" : [ ],
+  "dashboards" : [ {
+    "title" : "HTTP Monitor Overview",
+    "description" : "HTTP Monitor Stats (Unlock widget positions by clicking lock symbol on top right)",
+    "dashboard_widgets" : [ {
+      "description" : "HTTP Status last 24h",
+      "type" : "QUICKVALUES",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "field" : "http.monitor.status",
+        "show_pie_chart" : false,
+        "query" : "",
+        "show_data_table" : true
+      },
+      "col" : 4,
+      "row" : 1,
+      "cache_time" : 10
+    }, {
+      "description" : "HTTP 2XXs last 24h",
+      "type" : "SEARCH_RESULT_CHART",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "interval" : "hour",
+        "query" : "http.monitor.status:[200 TO 299]"
+      },
+      "col" : 4,
+      "row" : 4,
+      "cache_time" : 10
+    }, {
+      "description" : "HTTP 2XXs last 24h",
+      "type" : "SEARCH_RESULT_COUNT",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "lower_is_better" : false,
+        "trend" : false,
+        "query" : "http.monitor.status:[200 TO 299]"
+      },
+      "col" : 3,
+      "row" : 2,
+      "cache_time" : 10
+    }, {
+      "description" : "HTTP 3XXs last 24h",
+      "type" : "SEARCH_RESULT_COUNT",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "lower_is_better" : false,
+        "trend" : false,
+        "query" : "http.monitor.status:[300 TO 399]"
+      },
+      "col" : 3,
+      "row" : 1,
+      "cache_time" : 10
+    }, {
+      "description" : "HTTP 3XXs last 24h",
+      "type" : "SEARCH_RESULT_CHART",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "interval" : "hour",
+        "query" : "http.monitor.status:[300 TO 399]"
+      },
+      "col" : 3,
+      "row" : 4,
+      "cache_time" : 10
+    }, {
+      "description" : "HTTP 4XXs last 24h",
+      "type" : "SEARCH_RESULT_COUNT",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "lower_is_better" : false,
+        "trend" : false,
+        "query" : "http.monitor.status:[400 TO 499]"
+      },
+      "col" : 2,
+      "row" : 1,
+      "cache_time" : 10
+    }, {
+      "description" : "Connection Failures last 24h",
+      "type" : "SEARCH_RESULT_COUNT",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "lower_is_better" : false,
+        "trend" : false,
+        "query" : "http.monitor.status:999"
+      },
+      "col" : 2,
+      "row" : 2,
+      "cache_time" : 10
+    }, {
+      "description" : "Connection Failures last 24h",
+      "type" : "SEARCH_RESULT_CHART",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "interval" : "hour",
+        "query" : "http.monitor.status:999"
+      },
+      "col" : 2,
+      "row" : 5,
+      "cache_time" : 10
+    }, {
+      "description" : "Timeouts last 24h",
+      "type" : "SEARCH_RESULT_COUNT",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "lower_is_better" : false,
+        "trend" : false,
+        "query" : "http.monitor.status:998"
+      },
+      "col" : 1,
+      "row" : 2,
+      "cache_time" : 10
+    }, {
+      "description" : "Timeout last 24h",
+      "type" : "SEARCH_RESULT_CHART",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "interval" : "hour",
+        "query" : "http.monitor.status:998"
+      },
+      "col" : 1,
+      "row" : 5,
+      "cache_time" : 10
+    }, {
+      "description" : "HTTP 5XXs last 24h",
+      "type" : "SEARCH_RESULT_COUNT",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "lower_is_better" : false,
+        "trend" : false,
+        "query" : "http.monitor.status:[500 TO 599]"
+      },
+      "col" : 1,
+      "row" : 1,
+      "cache_time" : 10
+    }, {
+      "description" : "HTTP 5XXs last 24h",
+      "type" : "SEARCH_RESULT_CHART",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "interval" : "hour",
+        "query" : "http.monitor.status:[500 TO 599]"
+      },
+      "col" : 1,
+      "row" : 4,
+      "cache_time" : 10
+    }, {
+      "description" : "HTTP 4XXs last 24h",
+      "type" : "SEARCH_RESULT_CHART",
+      "configuration" : {
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "interval" : "hour",
+        "query" : "http.monitor.status:[400 TO 499]"
+      },
+      "col" : 2,
+      "row" : 4,
+      "cache_time" : 10
+    }, {
+      "description" : "Response Time (ms) last 24h",
+      "type" : "FIELD_CHART",
+      "configuration" : {
+        "valuetype" : "max",
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "renderer" : "line",
+        "interpolation" : "linear",
+        "field" : "http.monitor.responseTime",
+        "query" : "*",
+        "interval" : "hour"
+      },
+      "col" : 1,
+      "row" : 3,
+      "cache_time" : 10
+    }, {
+      "description" : "Response Size (bytes) last 24h",
+      "type" : "FIELD_CHART",
+      "configuration" : {
+        "valuetype" : "max",
+        "timerange" : {
+          "type" : "relative",
+          "range" : 86400
+        },
+        "renderer" : "line",
+        "interpolation" : "linear",
+        "field" : "http.monitor.responseSize",
+        "query" : "*",
+        "interval" : "hour"
+      },
+      "col" : 3,
+      "row" : 3,
+      "cache_time" : 10
+    } ]
+  } ],
+  "grok_patterns" : [ ]
+}
