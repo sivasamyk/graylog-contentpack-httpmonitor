@@ -14,6 +14,8 @@ Setup
 * Goto Dashboards to find HTTP Monitor Overview dashboard. Unlock and rearrage the widgets as per the requirements
 * Goto Streams and start the required HTTP Monitor streams. (note by default add HTTP Monitor streams are paused.)
 
+![Import](https://raw.githubusercontent.com/sivasamyk/graylog-contentpack-httpmonitor/master/import.png)
+
 Dashboard
 ---------
 
